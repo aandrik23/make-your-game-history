@@ -1,7 +1,7 @@
 // storyMode.js
 
 import { startStoryGame } from "./main.js";
-import { Continue, Pause, showMainMenu } from "./menu.js";
+import { Continue, Pause, SetGameRunning, showMainMenu } from "./menu.js";
 
 // Intro, development, and ending story screens for Bomber Game
 
@@ -40,6 +40,7 @@ export function showIntro() {
 // Optional: mid-story when a score milestone is hit
 export function showMidStory() {
 
+  SetGameRunning(false);
   Pause()
 
   game.style.display = "none";
@@ -59,11 +60,13 @@ export function showMidStory() {
   document.getElementById("continueMissionBtn").onclick = () => {
     overlay.remove();
     game.style.display = "grid";
+    SetGameRunning(true);
     Continue()
   }
 }
 
 export function showEnding(victory = true) {
+  SetGameRunning(false);
   Pause()
   game.style.display = "none";
   const overlay = document.createElement("div");

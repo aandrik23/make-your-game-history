@@ -176,3 +176,9 @@ export function Pause() {
     setPausedAt();
     cancelAnimationFrame(animationState.id);
 }
+
+function SetGameRunning(x) {
+    gameRunning = x;
+}
+
+export { SetGameRunning };
