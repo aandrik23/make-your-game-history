@@ -5,7 +5,7 @@ import { tileMap2D } from "./bomber.js";
 import { gamePaused, animationState, showMainMenu } from "./menu.js";
 import { PlayPowerUpSound, PlayLevelClearedSound, stopMusic } from "./audio.js";
 import { loadYouWin } from "./videos.js";
-import { showMidStory } from "./storyMode.js";
+import { showEnding, showMidStory } from "./storyMode.js";
 
 
 let lastTime = performance.now();
@@ -118,9 +118,9 @@ export function gameLoop(time) {
                     stopMusic();
                     PlayLevelClearedSound();
                     loadYouWin();
-                    // proceed to next level
                 }
-                showMainMenu();
+                showEnding(true);
+
             }
         }
 

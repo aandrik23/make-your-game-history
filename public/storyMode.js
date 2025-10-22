@@ -1,7 +1,7 @@
 // storyMode.js
 
 import { startStoryGame } from "./main.js";
-import { Continue, Pause } from "./menu.js";
+import { Continue, Pause, showMainMenu } from "./menu.js";
 
 // Intro, development, and ending story screens for Bomber Game
 
@@ -64,6 +64,8 @@ export function showMidStory() {
 }
 
 export function showEnding(victory = true) {
+  Pause()
+  game.style.display = "none";
   const overlay = document.createElement("div");
   overlay.id = "storyOverlay";
   overlay.innerHTML = `
@@ -81,7 +83,6 @@ export function showEnding(victory = true) {
 
   document.getElementById("returnToMenuBtn").onclick = () => {
     overlay.remove();
-    // Return to menu
-    import("./menu.js").then(m => m.showMainMenu());
+    showMainMenu();
   };
 }
