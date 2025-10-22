@@ -5,10 +5,15 @@ import { Continue, Pause } from "./menu.js";
 
 // Intro, development, and ending story screens for Bomber Game
 
+
+const game = document.getElementById("game");
+
+
 export function showIntro() {
-    const overlay = document.createElement("div");
-    overlay.id = "storyOverlay";
-    overlay.innerHTML = `
+  game.style.display = "none";
+  const overlay = document.createElement("div");
+  overlay.id = "storyOverlay";
+  overlay.innerHTML = `
     <div class="story-panel">
       <h2>🔥 The Siege Begins</h2>
       <p>
@@ -22,22 +27,25 @@ export function showIntro() {
       <button id="beginMissionBtn">Begin Mission</button>
     </div>
   `;
-    document.body.appendChild(overlay);
+  document.body.appendChild(overlay);
 
-    document.getElementById("beginMissionBtn").onclick = () => {
-        overlay.remove();
-        // continue to game start
-        startStoryGame();
-    };
+  document.getElementById("beginMissionBtn").onclick = () => {
+    overlay.remove();
+    game.style.display = "grid";
+    // continue to game start
+    startStoryGame();
+  };
 }
 
 // Optional: mid-story when a score milestone is hit
 export function showMidStory() {
-    
-    Pause()
-    const overlay = document.createElement("div");
-    overlay.id = "storyOverlay";
-    overlay.innerHTML = `
+
+  Pause()
+
+  game.style.display = "none";
+  const overlay = document.createElement("div");
+  overlay.id = "storyOverlay";
+  overlay.innerHTML = `
     <div class="story-panel">
       <h2>⚙️ Powering Up</h2>
       <p>
@@ -47,29 +55,33 @@ export function showMidStory() {
       <button id="continueMissionBtn">Continue</button>
     </div>
   `;
-    document.body.appendChild(overlay);
-    document.getElementById("continueMissionBtn").onclick = () => { overlay.remove(); Continue() }
+  document.body.appendChild(overlay);
+  document.getElementById("continueMissionBtn").onclick = () => {
+    overlay.remove();
+    game.style.display = "grid";
+    Continue()
+  }
 }
 
 export function showEnding(victory = true) {
-    const overlay = document.createElement("div");
-    overlay.id = "storyOverlay";
-    overlay.innerHTML = `
+  const overlay = document.createElement("div");
+  overlay.id = "storyOverlay";
+  overlay.innerHTML = `
     <div class="story-panel">
       <h2>${victory ? "🏆 Mission Complete" : "💀 Mission Failed"}</h2>
       <p>
         ${victory
-            ? "The city of Gridlock is saved. Your courage reignites hope!"
-            : "The robots have won this time. But every engineer leaves a legacy..."}
+      ? "The city of Gridlock is saved. Your courage reignites hope!"
+      : "The robots have won this time. But every engineer leaves a legacy..."}
       </p>
       <button id="returnToMenuBtn">Return to Menu</button>
     </div>
   `;
-    document.body.appendChild(overlay);
+  document.body.appendChild(overlay);
 
-    document.getElementById("returnToMenuBtn").onclick = () => {
-        overlay.remove();
-        // Return to menu
-        import("./menu.js").then(m => m.showMainMenu());
-    };
+  document.getElementById("returnToMenuBtn").onclick = () => {
+    overlay.remove();
+    // Return to menu
+    import("./menu.js").then(m => m.showMainMenu());
+  };
 }

@@ -12,6 +12,10 @@ body {
   /* optional: dark background */
 }
 
+.hidden {
+  display: none;
+}
+
 #game {
   display: grid;
   position: relative;
