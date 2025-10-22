@@ -557,48 +557,92 @@ body {
   background-color: #365892;
 }
 
-.story-overlay {
+
+
+/* =======================
+   Story center box (overlay)
+   -----------------------
+   This centers the story box in the middle of the screen
+   with smooth fade-in animation and a glassy panel style.
+   ======================= */
+#storyOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  z-index: 9999;
-  font-family: 'Press Start 2P', monospace;
-  padding: 2rem;
+  z-index: 3000;
+  pointer-events: none;
+  animation: overlayFadeIn 300ms ease-out forwards;
 }
 
-.story-overlay h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+#storyOverlay .story-panel {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(20, 20, 25, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  padding: 24px 30px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.94);
+  animation: storyPopIn 280ms ease-out forwards;
+}
+
+#storyOverlay .story-panel h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
   color: #ffcc00;
 }
 
-.story-overlay p {
-  max-width: 600px;
-  margin: 0.5rem 0;
+#storyOverlay .story-panel p {
+  margin: 8px 0;
+  font-size: 1rem;
   line-height: 1.6;
+  opacity: 0.95;
 }
 
-.story-overlay button {
-  margin-top: 1.5rem;
-  padding: 10px 20px;
-  border: none;
+#storyOverlay .story-panel button {
+  margin-top: 14px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 12px;
   background: #ffcc00;
-  color: black;
-  font-weight: bold;
+  color: #111;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.2s;
+  transition: transform 120ms ease, filter 120ms ease;
 }
 
-.story-overlay button:hover {
-  background: #fff600;
+#storyOverlay .story-panel button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+#storyOverlay .story-panel button:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+@keyframes overlayFadeIn {
+  from { background: rgba(0, 0, 0, 0); }
+  to   { background: rgba(0, 0, 0, 0.65); }
+}
+
+@keyframes storyPopIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Small screens: reduce padding and font sizes a bit */
+@media (max-width: 520px) {
+  #storyOverlay { padding: 8px; }
+  #storyOverlay .story-panel { padding: 12px 14px; }
+  #storyOverlay .story-panel h2 { font-size: 1.1rem; }
+  #storyOverlay .story-panel p  { font-size: 0.92rem; }
 }

@@ -2,6 +2,7 @@
 
 import { startStoryGame } from "./main.js";
 import { Continue, Pause, SetGameRunning, showMainMenu } from "./menu.js";
+import { loadGameOver, loadYouWin } from "./videos.js";
 
 // Intro, development, and ending story screens for Bomber Game
 
@@ -67,25 +68,46 @@ export function showMidStory() {
 
 export function showEnding(victory = true) {
   SetGameRunning(false);
-  Pause()
+  Pause();
   game.style.display = "none";
-  const overlay = document.createElement("div");
-  overlay.id = "storyOverlay";
-  overlay.innerHTML = `
-    <div class="story-panel">
-      <h2>${victory ? "🏆 Mission Complete" : "💀 Mission Failed"}</h2>
-      <p>
-        ${victory
-      ? "The city of Gridlock is saved. Your courage reignites hope!"
-      : "The robots have won this time. But every engineer leaves a legacy..."}
-      </p>
-      <button id="returnToMenuBtn">Return to Menu</button>
-    </div>
-  `;
-  document.body.appendChild(overlay);
+  
+  //play the video based on victory or defeat
+  if (victory) {
+    loadYouWin();
+  } else {
+    loadGameOver();
+  }
 
-  document.getElementById("returnToMenuBtn").onclick = () => {
-    overlay.remove();
-    showMainMenu();
+  const checkVideoEnd = () => {
+    const videos = document.querySelectorAll("video");
+    if (videos.length > 0) {
+      //  connect video with event listener
+      const video = videos[videos.length - 1];
+      video.addEventListener("ended", () => {
+        const overlay = document.createElement("div");
+        overlay.id = "storyOverlay";
+        overlay.innerHTML = `
+          <div class="story-panel">
+            <h2>${victory ? "🏆 Mission Complete" : "💀 Mission Failed"}</h2>
+            <p>
+              ${victory
+            ? "The city of Gridlock is saved. Your courage reignites hope!"
+            : "The robots have won this time. But every engineer leaves a legacy..."}
+            </p>
+            <button id="returnToMenuBtn">Return to Menu</button>
+          </div>
+        `;
+        document.body.appendChild(overlay);
+
+        document.getElementById("returnToMenuBtn").onclick = () => {
+          overlay.remove();
+          showMainMenu();
+        };
+      });
+    } else {
+      // check again after a short delay
+      setTimeout(checkVideoEnd, 100);
+    }
   };
+  checkVideoEnd();
 }
