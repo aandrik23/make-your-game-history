@@ -8,9 +8,10 @@ import { loadGameOver, loadYouWin } from "./videos.js";
 
 
 const game = document.getElementById("game");
-
+const pauseMenu = document.getElementById("pauseMenu");
 
 export function showIntro() {
+  pauseMenu.style.display = "none";
   game.style.display = "none";
   const overlay = document.createElement("div");
   overlay.id = "storyOverlay";
@@ -70,7 +71,7 @@ export function showEnding(victory = true) {
   SetGameRunning(false);
   Pause();
   game.style.display = "none";
-  
+
   //play the video based on victory or defeat
   if (victory) {
     loadYouWin();

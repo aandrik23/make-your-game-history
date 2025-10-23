@@ -70,16 +70,19 @@ startBtn.onclick = () => {
 
 
 infoBtn.onclick = () => {
+    SetGameRunning(false);
     infoMenu.style.display = "flex";
     backInfoBtn.focus();
 };
 
 infoPauseBtn.onclick = () => {
+    SetGameRunning(false);
     infoMenu.style.display = "flex";
     backInfoBtn.focus();  // focus back button for accessibility.   ***
 };
 
 backInfoBtn.onclick = () => {
+    SetGameRunning(true);
     infoMenu.style.display = "none";   // hide info menu    // show main menu again
 };
 
@@ -108,7 +111,8 @@ continueBtn.onclick = () => {
     hideMenu();
 };
 restartBtn.onclick = () => {
-    Restart();
+    showIntro();
+
 };
 mainMenuBtn.onclick = () => {
     showMainMenu();
