@@ -646,3 +646,29 @@ body {
   #storyOverlay .story-panel h2 { font-size: 1.1rem; }
   #storyOverlay .story-panel p  { font-size: 0.92rem; }
 }
+
+/* ===== Countdown Overlay ===== */
+.countdown-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(4rem, 12vw, 10rem);
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+  z-index: 9999; 
+  user-select: none;
+}
+
+@keyframes popInOut {
+  0%   { transform: scale(0);   opacity: 0; }
+  35%  { transform: scale(1.2); opacity: 1; }
+  70%  { transform: scale(1.0); opacity: 1; }
+  100% { transform: scale(1.0); opacity: 0; }
+}
+
+.countdown-overlay.pop {
+  animation: popInOut 0.95s ease-in-out;
+}

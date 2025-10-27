@@ -3,6 +3,7 @@
 import { startStoryGame } from "./main.js";
 import { Continue, Pause, SetGameRunning, showMainMenu } from "./menu.js";
 import { loadGameOver, loadYouWin } from "./videos.js";
+import { runCountdown } from "./countdown.js";
 
 // Intro, development, and ending story screens for Bomber Game
 
@@ -61,9 +62,12 @@ export function showMidStory() {
   document.body.appendChild(overlay);
   document.getElementById("continueMissionBtn").onclick = () => {
     overlay.remove();
+    // show the game but stay paused
     game.style.display = "grid";
-    SetGameRunning(true);
-    Continue()
+    runCountdown(() => {
+      SetGameRunning(true);
+      Continue();
+    });
   }
 }
 
