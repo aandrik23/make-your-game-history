@@ -28,10 +28,6 @@ export function playerHit() {
             PlayLevelFailedSound();
             loadGameOver();
             showEnding(false);
-            // // we should fix this to show a proper game over screen
-            // alert("Game Over!");
-            // window.location.reload();
-            // return;
         }
 
         // Reset player position

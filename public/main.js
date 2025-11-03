@@ -1,9 +1,8 @@
 import { gameLoop } from "./gameLoop.js";
 import { buildMap } from "./bomber.js";
-import { Restart, showMainMenu } from "./menu.js";
+import { gamePaused, gameRunning, Restart, SetGameRunning, showMainMenu } from "./menu.js";
 import { initAudioControls } from "./audio.js";
 import { showIntro } from "./storyMode.js";
-
 
 import { player } from './bomber.js';
 
@@ -14,12 +13,14 @@ window.addEventListener("keydown", (e) => {
 
     if (!player) return; // No player yet
 
-    switch (e.key) {
-        case "ArrowUp": case "w": case "W": player.nextDir = { dx: 0, dy: -1 }; player.el.style.backgroundImage = 'url("./images/BombermanUp.png")'; break;
-        case "ArrowDown": case "s": case "S": player.nextDir = { dx: 0, dy: 1 }; player.el.style.backgroundImage = 'url("./images/BombermanDown.png")'; break;
-        case "ArrowLeft": case "a": case "A": player.nextDir = { dx: -1, dy: 0 }; player.el.style.backgroundImage = 'url("./images/BombermanLeft.png")'; break;
-        case "ArrowRight": case "d": case "D": player.nextDir = { dx: 1, dy: 0 }; player.el.style.backgroundImage = 'url("./images/BombermanRight.png")'; break;
-        case "B": case "b": player.dropBomb(); break;
+    if (gamePaused === false) {
+        switch (e.key) {
+            case "ArrowUp": case "w": case "W": player.nextDir = { dx: 0, dy: -1 }; player.el.style.backgroundImage = 'url("./images/BombermanUp.png")'; break;
+            case "ArrowDown": case "s": case "S": player.nextDir = { dx: 0, dy: 1 }; player.el.style.backgroundImage = 'url("./images/BombermanDown.png")'; break;
+            case "ArrowLeft": case "a": case "A": player.nextDir = { dx: -1, dy: 0 }; player.el.style.backgroundImage = 'url("./images/BombermanLeft.png")'; break;
+            case "ArrowRight": case "d": case "D": player.nextDir = { dx: 1, dy: 0 }; player.el.style.backgroundImage = 'url("./images/BombermanRight.png")'; break;
+            case "B": case "b": player.dropBomb(); break;
+        }
     }
 });
 

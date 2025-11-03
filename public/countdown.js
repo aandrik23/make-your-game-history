@@ -5,7 +5,7 @@ export function runCountdown(onDone) {
     overlay.className = 'countdown-overlay';
     document.body.appendChild(overlay);
 
-    const steps = ['images/3.png', 'images/2.png', 'images/1.png', '/images/go.png'];
+    const steps = ['images/3.png', 'images/2.png', 'images/1.png', 'images/go.png'];
     let i = 0;
 
     const showStep = () => {

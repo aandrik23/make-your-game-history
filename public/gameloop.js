@@ -1,4 +1,4 @@
-import { entities, player } from "./bomber.js";
+import { entities, player, difficulty } from "./bomber.js";
 import { addScore, lives, score, playerHit } from "./gameState.js";
 import { Player, Bomb, PowerUp, Explosion, Enemy, Objective } from "./classes.js";
 import { tileMap2D } from "./bomber.js";
@@ -6,6 +6,7 @@ import { gamePaused, animationState, showMainMenu } from "./menu.js";
 import { PlayPowerUpSound, PlayLevelClearedSound, stopMusic } from "./audio.js";
 import { loadYouWin } from "./videos.js";
 import { showEnding, showMidStory } from "./storyMode.js";
+
 
 
 let lastTime = performance.now();
@@ -48,6 +49,7 @@ export function gameLoop(time) {
         // Update lives and score
         document.getElementById("lives").textContent = `Lives: ${lives}`;
         document.getElementById("score").textContent = `Score: ${score}`;
+        document.getElementById("difficulty").textContent = `Difficulty: ${difficulty}`;
 
 
         // Update timer

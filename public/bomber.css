@@ -394,6 +394,10 @@ body {
   background-color: #365892;
 }
 
+.difficultyBtn.selected {
+  background-color: #365892;
+}
+
 .audio-settings {
   display: flex;
   justify-content: center;

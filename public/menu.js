@@ -4,10 +4,10 @@ import { setPausedAt, addPausedDuration, resetFrameTimers } from "./gameLoop.js"
 import { resetGame } from "./bomber.js";
 import { startMusic, stopMusic } from "./audio.js";
 import { showIntro } from "./storyMode.js";
+import { runCountdown } from "./countdown.js";
 
-
-let gamePaused = true;
-let gameRunning = false;
+export let gamePaused = true;
+export let gameRunning = false;
 export const animationState = { id: null };
 
 const menu = document.getElementById("menu");
@@ -61,6 +61,10 @@ export function hideMenu() {
     }
 }
 
+function hideMenuUIOnly() {
+    menu.style.display = "none"; // just hide the menu UI
+}
+
 // Main menu buttons
 startBtn.onclick = () => {
     menu.style.display = "none";
@@ -106,9 +110,7 @@ quitBtn.onclick = () => {
 
 // Pause menu buttons
 continueBtn.onclick = () => {
-    startMusic();
-    resetFrameTimers();
-    hideMenu();
+    Continue();
 };
 restartBtn.onclick = () => {
     showIntro();
@@ -152,13 +154,6 @@ window.addEventListener("keyup", (e) => {
     }
 });
 
-
-
-
-export { gamePaused, gameRunning };
-
-
-
 export function Restart() {
     startMusic();
     cancelAnimationFrame(animationState.id);
@@ -168,10 +163,21 @@ export function Restart() {
 }
 
 export function Continue() {
-    hideMenu()
-    startMusic();
-    addPausedDuration();
+    //hide menu UI
+    hideMenuUIOnly();
 
+    //keep the game frozen
+    SetGameRunning(false);
+    gamePaused = true;
+    stopMusic();
+
+    runCountdown(() => {
+        gamePaused = false;
+        SetGameRunning(true);
+        resetFrameTimers();
+        startMusic();
+        hideMenu();
+    })
 }
 
 export function Pause() {

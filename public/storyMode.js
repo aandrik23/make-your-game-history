@@ -64,10 +64,9 @@ export function showMidStory() {
     overlay.remove();
     // show the game but stay paused
     game.style.display = "grid";
-    runCountdown(() => {
-      SetGameRunning(true);
-      Continue();
-    });
+    SetGameRunning(true);
+    Continue();
+    
   }
 }
 
