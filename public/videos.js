@@ -1,10 +1,12 @@
-export function loadGameOver() {
+import { VIDEO_PATHS } from "./config/paths.js";
+
+function playVideo(path) {
 
     const gameContainer = document.getElementById('game');
     const rect = gameContainer.getBoundingClientRect();
 
     const video = document.createElement('video');
-    video.src = './video/GameOver.mp4';
+    video.src = path;
     video.width = rect.width;   // match game container width
     video.height = rect.height; // match game container height
     video.controls = false;
@@ -23,25 +25,10 @@ export function loadGameOver() {
 }
 
 
+export function loadGameOver() {
+    playVideo(VIDEO_PATHS.gameOver);
+}
+  
 export function loadYouWin() {
-    const gameContainer = document.getElementById('game');
-    const rect = gameContainer.getBoundingClientRect();
-
-    const video = document.createElement('video');
-    video.src = './video/BIM.mp4';
-    video.width = rect.width;   // match game container width
-    video.height = rect.height; // match game container height
-    video.controls = false;
-    video.autoplay = true;
-    video.muted = true; // helps autoplay
-    video.style.position = 'absolute';
-    video.style.top = `${rect.top}px`;
-    video.style.left = `${rect.left}px`;
-    video.style.zIndex = 1000; // make sure it’s on top
-    video.style.objectFit = 'cover'; // cover the entire game area
-
-    document.body.appendChild(video);
-
-    // Remove video when finished
-    video.addEventListener('ended', () => video.remove());
+    playVideo(VIDEO_PATHS.youWin);
 }

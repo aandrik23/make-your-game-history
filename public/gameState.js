@@ -1,6 +1,5 @@
 import { PlayerHitSound, PlayLevelFailedSound, stopMusic } from './audio.js';
 import { player } from './bomber.js';
-import { showMainMenu } from './menu.js';
 import { showEnding } from './storyMode.js';
 import { loadGameOver } from './videos.js';
 

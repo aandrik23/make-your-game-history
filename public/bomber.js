@@ -1,7 +1,7 @@
 import { Player, Enemy, Tile, PowerUp } from "./classes.js";
 import { resetFrameTimers, ResetPort, resetTimer } from "./gameLoop.js";
 import { resetStats } from "./gameState.js";
-import { Continue, hideMenu, Restart } from "./menu.js";
+import { Continue, Restart } from "./menu.js";
 
 
 import { tileMap, getFreshTileMap2D } from "./mapData.js";

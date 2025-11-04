@@ -1,7 +1,5 @@
-import { buildMap } from "./bomber.js";
-import { gameLoop, resetTimer } from "./gameLoop.js";
-import { setPausedAt, addPausedDuration, resetFrameTimers } from "./gameLoop.js";
-import { resetGame } from "./bomber.js";
+import { buildMap,resetGame  } from "./bomber.js";
+import { gameLoop, resetTimer,setPausedAt, resetFrameTimers  } from "./gameLoop.js";
 import { startMusic, stopMusic } from "./audio.js";
 import { showIntro } from "./storyMode.js";
 import { runCountdown } from "./countdown.js";

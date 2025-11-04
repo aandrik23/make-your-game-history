@@ -1,8 +1,7 @@
-import { entities, player, difficulty } from "./bomber.js";
+import { entities, player, difficulty, tileMap2D } from "./bomber.js";
 import { addScore, lives, score, playerHit } from "./gameState.js";
 import { Player, Bomb, PowerUp, Explosion, Enemy, Objective } from "./classes.js";
-import { tileMap2D } from "./bomber.js";
-import { gamePaused, animationState, showMainMenu } from "./menu.js";
+import { gamePaused, animationState } from "./menu.js";
 import { PlayPowerUpSound, PlayLevelClearedSound, stopMusic } from "./audio.js";
 import { loadYouWin } from "./videos.js";
 import { showEnding, showMidStory } from "./storyMode.js";

@@ -43,70 +43,20 @@ body {
   align-items: center;
 }
 
-
-
-.wall {
-  background-image: url("images/rock.png");
-}
-
-.brick {
-  background-image: url("images/bricks.png");
-}
-
-.floor {
-  background-color: rgb(59, 63, 66);
-}
-
-
-.bomber {
-  background-image: url("images/BombermanRight.png");
-}
-
-.ghost-blue {
-  background-image: url("images/blueGhost.png");
-}
-
-.ghost-red {
-  background-image: url("images/enemy1.png");
-}
-
-.ghost-pink {
-  background-image: url("images/enemy2.png");
-}
-
-.ghost-orange {
-  background-image: url("images/enemy3.png");
-}
-
-.cherry {
-  background-image: url("images/cherry.png");
-}
-
-.apple {
-  background-image: url("images/apple.png");
-}
-
-.banana {
-  background-image: url("images/banana.png");
-}
-
-.key {
-  background-image: url("images/key.png");
-}
-
-.port {
-  background-image: url("images/port.png");
-}
-
-.bomb {
-  background-image: url("images/bomb.png");
-}
-
-
-.explosion {
-  background-image: url("images/explosion.png");
-}
-
+.wall         { background-image: var(--img-wall); }
+.brick        { background-image: var(--img-brick); }
+.bomber       { background-image: var(--img-bomber); }
+.ghost-blue   { background-image: var(--img-ghost-blue); }
+.ghost-red    { background-image: var(--img-ghost-red); }
+.ghost-pink   { background-image: var(--img-ghost-pink); }
+.ghost-orange { background-image: var(--img-ghost-orange); }
+.cherry       { background-image: var(--img-cherry); }
+.apple        { background-image: var(--img-apple); }
+.banana       { background-image: var(--img-banana); }
+.key          { background-image: var(--img-key); }
+.port         { background-image: var(--img-port); }
+.bomb         { background-image: var(--img-bomb); }
+.explosion    { background-image: var(--img-explosion); }
 
 .menu {
   position: fixed;

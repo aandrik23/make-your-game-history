@@ -3,7 +3,6 @@
 import { startStoryGame } from "./main.js";
 import { Continue, Pause, SetGameRunning, showMainMenu } from "./menu.js";
 import { loadGameOver, loadYouWin } from "./videos.js";
-import { runCountdown } from "./countdown.js";
 
 // Intro, development, and ending story screens for Bomber Game
 
