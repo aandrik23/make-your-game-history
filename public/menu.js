@@ -26,6 +26,7 @@ const mainMenuBtn = document.getElementById("mainMenuBtn")
 const settingsPauseBtn = document.getElementById("settingsPauseBtn");;
 const infoPauseBtn = document.getElementById("infoPauseBtn");
 
+
 //SETTINGS  
 export const settingsMenu = document.getElementById("settingsMenu");
 const backBtn = document.getElementById("backBtn");
