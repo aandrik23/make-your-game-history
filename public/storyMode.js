@@ -60,7 +60,7 @@ export function showMidStory() {
         You’ve done it — the encryption key is secured. The core’s defenses flicker back online.
       </p>
       <p>
-        But the Null Sector isn’t retreating. They’ve detected your intrusion and are rerouting corrupted drones to your location.
+        But the Null Sector isn’t retreating.
       </p>
       <p>
         Zone 01’s survival now depends on your next move. Reach the Central Port before the system locks you out forever.
