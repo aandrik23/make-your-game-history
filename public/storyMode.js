@@ -19,12 +19,17 @@ export function showIntro() {
     <div class="story-panel">
       <h2>🔥 The Siege Begins</h2>
       <p>
-        The once peaceful city of Gridlock has been overrun by rogue robots. 
-        You, Bomber, are the last engineer left with the power to fight back.
+        The high-tech megacorporation Zone 01 — leader in AI and cyber defense — has fallen under attack.
       </p>
       <p>
-        Your mission: infiltrate the robot-infested maze, recover the lost power key, 
-        and restore energy to the central core before the city is lost forever.
+        A rogue collective known as The Null Sector has breached the central system, infecting servers, shutting down power, and corrupting security bots.
+      </p>
+      <p>
+        You are Bomber, a cyber-engineer and the last remaining inside operative. Your mission:
+        Reboot the core, secure the encryption key, and restore the main system before Zone 01 collapses.
+      </p>
+      <p>
+        Time is running out — and the system is fighting back.
       </p>
       <button id="beginMissionBtn">Begin Mission</button>
     </div>
@@ -52,8 +57,13 @@ export function showMidStory() {
     <div class="story-panel">
       <h2>⚙️ Powering Up</h2>
       <p>
-        The power core begins to hum again... but danger is rising.
-        The robots have detected your presence. Stay sharp, Bomber.
+        You’ve done it — the encryption key is secured. The core’s defenses flicker back online.
+      </p>
+      <p>
+        But the Null Sector isn’t retreating. They’ve detected your intrusion and are rerouting corrupted drones to your location.
+      </p>
+      <p>
+        Zone 01’s survival now depends on your next move. Reach the Central Port before the system locks you out forever.
       </p>
       <button id="continueMissionBtn">Continue</button>
     </div>
@@ -94,8 +104,8 @@ export function showEnding(victory = true) {
             <h2>${victory ? "🏆 Mission Complete" : "💀 Mission Failed"}</h2>
             <p>
               ${victory
-            ? "The city of Gridlock is saved. Your courage reignites hope!"
-            : "The robots have won this time. But every engineer leaves a legacy..."}
+            ? "Zone 01 is restored — your code saved the company from collapse."
+            : "Zone 01 falls — the system is lost to the Null Sector."}
             </p>
             <button id="returnToMenuBtn">Return to Menu</button>
           </div>
