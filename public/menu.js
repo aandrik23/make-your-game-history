@@ -1,5 +1,5 @@
-import { buildMap,resetGame  } from "./bomber.js";
-import { gameLoop, resetTimer,setPausedAt, resetFrameTimers  } from "./gameLoop.js";
+import { buildMap, resetGame } from "./bomber.js";
+import { gameLoop, resetTimer, setPausedAt, resetFrameTimers, addPausedDuration } from "./gameLoop.js";
 import { startMusic, stopMusic } from "./audio.js";
 import { showIntro } from "./storyMode.js";
 import { runCountdown } from "./countdown.js";
@@ -171,11 +171,12 @@ export function Continue() {
     stopMusic();
 
     runCountdown(() => {
-        gamePaused = false;
+        addPausedDuration()
         SetGameRunning(true);
         resetFrameTimers();
         startMusic();
         hideMenu();
+        gamePaused = false;
     })
 }
 

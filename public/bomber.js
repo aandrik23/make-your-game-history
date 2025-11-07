@@ -104,7 +104,7 @@ export function updateTileMap2D(x, y, newChar) {
 
 
 // Define your variable (will change based on click)
-export let difficulty = "easy";
+export let difficulty = "Easy";
 let randomEnemy = 0.1; // default value
 
 // Get all buttons
@@ -117,11 +117,11 @@ buttons.forEach(button => {
         console.log("Difficulty set to:", difficulty);
 
         // Assign values
-        if (difficulty === "easy") {
+        if (difficulty === "Easy") {
             randomEnemy = 0.1;
-        } else if (difficulty === "medium") {
+        } else if (difficulty === "Medium") {
             randomEnemy = 0.2;
-        } else if (difficulty === "hard") {
+        } else if (difficulty === "Hard") {
             randomEnemy = 0.3;
         }
         Restart()

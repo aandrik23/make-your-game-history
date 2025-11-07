@@ -75,7 +75,7 @@ export function showMidStory() {
     game.style.display = "grid";
     SetGameRunning(true);
     Continue();
-    
+
   }
 }
 
@@ -114,6 +114,7 @@ export function showEnding(victory = true) {
 
         document.getElementById("returnToMenuBtn").onclick = () => {
           overlay.remove();
+          game.style.display = "grid";
           showMainMenu();
         };
       });

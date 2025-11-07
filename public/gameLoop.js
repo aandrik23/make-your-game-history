@@ -45,18 +45,18 @@ export function gameLoop(time) {
         lastFpsUpdate = time;
         document.getElementById("fps").textContent = `FPS: ${fps}`;
 
-        // Update lives and score
-        document.getElementById("lives").textContent = `Lives: ${lives}`;
-        document.getElementById("score").textContent = `Score: ${score}`;
-        document.getElementById("difficulty").textContent = `Difficulty: ${difficulty}`;
-
-
-        // Update timer
-        const elapsed = Math.floor((time - startTime - totalPausedTime) / 1000); // in seconds
-        const minutes = Math.floor(elapsed / 60);
-        const seconds = elapsed % 60;
-        document.getElementById("timer").textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
+    // Update lives and score
+    document.getElementById("lives").textContent = `Lives: ${lives}`;
+    document.getElementById("score").textContent = `Score: ${score}`;
+    document.getElementById("difficulty").textContent = `Difficulty: ${difficulty}`;
+
+
+    // Update timer
+    const elapsed = Math.floor((time - startTime - totalPausedTime) / 1000); // in seconds
+    const minutes = Math.floor(elapsed / 60);
+    const seconds = elapsed % 60;
+    document.getElementById("timer").textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
 
     // 1️⃣ Move player and enemies
     entities.forEach(e => {
@@ -200,7 +200,7 @@ export function setPausedAt() {
 
 export function addPausedDuration() {
     if (pausedAt !== null) {
-        totalPausedTime += performance.now() - pausedAt;
+        totalPausedTime += performance.now() - pausedAt - 0.7;
         pausedAt = null;
     }
 }
