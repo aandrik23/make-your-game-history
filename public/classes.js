@@ -121,26 +121,38 @@ export class Player extends Entity {
     this.updatePosition();
   }
 
-  dropBomb() {
+  dropBomb(tileSize = 32) {
+    this.bombs = this.bombs.filter(b => entities.includes(b));
 
-    this.bombs = this.bombs.filter(b => entities.includes(b)); // clean up exploded bombs
+    if (this.bombs.length >= 5) return;
 
-    // Limit active bombs
-    if (this.bombs.length >= 5) {
-      console.log("Max bombs reached, wait for one to explode.");
-      return;
-    }
+    const offsetX = this.posX - this.x * tileSize;
+    const offsetY = this.posY - this.y * tileSize;
 
-    // Prevent stacking bombs on the same tile
-    const existingBomb = entities.some(e => e instanceof Bomb && e.x === this.x && e.y === this.y);
-    if (existingBomb) {
-      console.log("There's already a bomb here!");
-      return;
-    }
-    const bomb = new Bomb(this.x, this.y, this.bombRadius, this.tileMap);
+    let bombX = this.x;
+    let bombY = this.y;
+
+    // Drop on next tile if more than half-way into tile
+    if (offsetX > tileSize / 2) bombX = this.x + 1;
+    if (offsetX < -tileSize / 2) bombX = this.x - 1;
+
+    if (offsetY > tileSize / 2) bombY = this.y + 1;
+    if (offsetY < -tileSize / 2) bombY = this.y - 1;
+
+    // Prevent stacking
+    const existingBomb = entities.some(
+      e => e instanceof Bomb && e.x === bombX && e.y === bombY
+    );
+    if (existingBomb) return;
+
+    const bomb = new Bomb(bombX, bombY, this.bombRadius, this.tileMap);
     entities.push(bomb);
     this.bombs.push(bomb);
   }
+
+
+
+
 
   chooseDirection() {
     const newX = this.x + this.nextDir.dx;
