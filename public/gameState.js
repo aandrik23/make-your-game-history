@@ -22,6 +22,8 @@ export function playerHit() {
     PlayerHitSound();
     if (!player.invulnerable) {
         lives--;
+        document.getElementById("lives").textContent = `Lives: ${lives}`;
+
         if (lives <= 0) {
             stopMusic();
             PlayLevelFailedSound();
