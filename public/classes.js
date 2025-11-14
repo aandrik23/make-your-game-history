@@ -1,6 +1,6 @@
 import { ExplosionSound } from './audio.js';
 import { entities, bricks, COLS, ROWS, updateTileMap2D } from './bomber.js';
-import { addPausedDuration } from './gameloop.js';
+import { addPausedDuration } from './gameLoop.js';
 import { addScore } from './gameState.js';
 
 
